@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahmadxon Abdulhakimov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: ustunli sahifa, chap tomonda geometrik naqsh, o'ng tomonda mazmun */
+:root {
+  --bg: #eef2f4;
+  --surface: #ffffff;
+  --ink: #12262e;
+  --muted: #55696f;
+  --accent: #0b6e6e;
+  --accent-soft: #d3ecea;
+  --gold: #b7791f;
+  --line: #cdd8dc;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+header.top {
+  background: var(--ink);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+header.top .pattern {
+  position: absolute; inset: 0;
+  opacity: .18;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
+}
+header.top .wrap { position: relative; padding-top: 28px; padding-bottom: 64px; }
+nav { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 16px; }
+nav a { color: #cfe3e3; text-decoration: none; padding: 4px 0; }
+nav a:hover { color: #fff; text-decoration: underline; }
+.hero { margin-top: 56px; display: grid; gap: 18px; }
+.kicker { color: #9fd3cf; font-weight: 600; letter-spacing: .04em; margin: 0; }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.3rem, 8vw, 4.4rem);
+  line-height: 1.05;
+  margin: 0;
+  text-wrap: balance;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 0; padding: 0; list-style: none; }
+.chips li {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 16px;
+}
+main { padding: 8px 0 48px; }
+section { padding-top: 48px; }
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+.lead { max-width: 65ch; margin: 0; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 22px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.card h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 6px; }
+.card p { margin: 0; color: var(--muted); }
+.card .big { font-family: var(--font-display); font-size: 2rem; color: var(--accent); display: block; line-height: 1.1; }
+.band {
+  background: var(--accent-soft);
+  border-left: 6px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+  margin-top: 22px;
+  max-width: 70ch;
+}
+.band p { margin: 0; }
+.solver { margin-top: 22px; }
+.solver form { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 1.15rem; }
+.solver input {
+  width: 84px;
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+.solver button {
+  font: inherit; font-weight: 600;
+  background: var(--accent); color: #fff;
+  border: 0; border-radius: 8px;
+  padding: 9px 18px; cursor: pointer;
+}
+.solver button:hover { background: #095858; }
+.result { margin: 14px 0 0; font-weight: 600; min-height: 1.6em; }
+.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+.timeline { list-style: none; margin: 22px 0 0; padding: 0; border-left: 3px solid var(--line); }
+.timeline li { padding: 0 0 18px 20px; position: relative; }
+.timeline li::before {
+  content: ""; position: absolute; left: -9px; top: 8px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--gold); border: 3px solid var(--bg);
+}
+.timeline strong { font-family: var(--font-display); }
+footer { background: var(--ink); color: #cfe3e3; padding: 28px 0; font-size: 16px; }
+footer p { margin: 0 0 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="pattern" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav aria-label="Bo'limlar">
+      <a href="#haqimda">Men haqimda</a>
+      <a href="#loyiha">Loyiha</a>
+      <a href="#xorazmiy">Al-Xorazmiy</a>
+      <a href="#algebra">Algebra sinovi</a>
+      <a href="#aloqa">Aloqa</a>
+    </nav>
+    <div class="hero">
+      <p class="kicker">Shaxsiy sahifa</p>
+      <h1>Ahmadxon Abdulhakimov</h1>
+      <ul class="chips">
+        <li>47-maktab</li>
+        <li>8-"B" sinf</li>
+        <li>Al-Xorazmiy vorislari</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="haqimda">
+    <h2>Men haqimda</h2>
+    <p class="lead">Salom! Men Ahmadxon Abdulhakimov. 47-maktabning 8-"B" sinfida o'qiyman. Hozir O'zbekistonning barcha hududlarida ommalashgan "Al-Xorazmiy vorislari" loyihasining o'quvchisiman.</p>
+    <div class="grid">
+      <div class="card"><span class="big">8-"B"</span><p>Sinfim</p></div>
+      <div class="card"><span class="big">47</span><p>Maktabim raqami</p></div>
+      <div class="card"><span class="big">2026</span><p>Joriy o'quv yili</p></div>
+    </div>
+  </section>
+
+  <section id="loyiha">
+    <h2>Al-Xorazmiy vorislari loyihasi</h2>
+    <p class="lead">Bu loyiha O'zbekistonning barcha hududlarida keng tarqalgan. Unda o'quvchilar buyuk bobokalonimiz Al-Xorazmiy izidan borib, zamonaviy bilimlarni o'rganadi.</p>
+    <div class="band">
+      <p>Men bu loyihada o'qiyman va har kuni yangi narsa o'rganishga harakat qilaman.</p>
+    </div>
+  </section>
+
+  <section id="xorazmiy">
+    <h2>Muhammad ibn Muso al-Xorazmiy kim?</h2>
+    <p class="lead">Al-Xorazmiy (taxminan 780–850) Xorazmda tug'ilgan buyuk olim bo'lib, matematika, astronomiya va geografiya sohalarida ishlagan.</p>
+    <ul class="timeline">
+      <li><strong>Algebra.</strong> "Al-jabr val-muqobala" asari algebra fanining nomi va asosini bergan. "Algebra" so'zi "al-jabr"dan kelib chiqqan.</li>
+      <li><strong>Algoritm.</strong> "Algoritm" so'zi uning nomining lotincha shaklidan olingan. Bugungi dasturlash ham algoritmlarga tayanadi.</li>
+      <li><strong>Hind raqamlari.</strong> U o'nlik pozitsion sanoq tizimini keng tarqatishga hissa qo'shgan.</li>
+      <li><strong>Bag'dod.</strong> U "Bayt ul-hikma" (Donishmandlik uyi)da ilmiy ish olib borgan.</li>
+    </ul>
+  </section>
+
+  <section id="algebra">
+    <h2>Algebra sinovi</h2>
+    <p class="lead">Al-Xorazmiy tenglamalar bilan ishlagan. Quyida a·x + b = c ko'rinishidagi tenglamani yeching.</p>
+    <div class="card solver">
+      <form id="eq" autocomplete="off">
+        <input id="a" type="number" value="3" aria-label="a qiymati"> <span>· x +</span>
+        <input id="b" type="number" value="5" aria-label="b qiymati"> <span>=</span>
+        <input id="c" type="number" value="20" aria-label="c qiymati">
+        <button type="submit">Yechish</button>
+      </form>
+      <p class="result" id="res" aria-live="polite"></p>
+      <ol class="steps" id="steps"></ol>
+    </div>
+  </section>
+
+  <section id="aloqa">
+    <h2>Aloqa</h2>
+    <p class="lead">Bog'lanish uchun manzillar shu yerga qo'shiladi. Telegram yoki elektron pochtangizni pastdagi kodda o'zgartiring.</p>
+    <div class="grid">
+      <div class="card"><h3>Telegram</h3><p>@sizning_nomingiz</p></div>
+      <div class="card"><h3>Elektron pochta</h3><p>ism@pochta.uz</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Ahmadxon Abdulhakimov · 47-maktab, 8-"B" sinf</p>
+    <p>"Al-Xorazmiy vorislari" loyihasi o'quvchisi</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById("eq");
+  var res = document.getElementById("res");
+  var steps = document.getElementById("steps");
+  function solve() {
+    var a = parseFloat(document.getElementById("a").value);
+    var b = parseFloat(document.getElementById("b").value);
+    var c = parseFloat(document.getElementById("c").value);
+    steps.innerHTML = "";
+    if ([a, b, c].some(isNaN)) { res.textContent = "Uchala maydonga ham son kiriting."; return; }
+    if (a === 0) {
+      res.textContent = (b === c) ? "x istalgan son bo'ladi." : "Yechim yo'q.";
+      return;
+    }
+    var x = (c - b) / a;
+    var r = Math.round(x * 1000) / 1000;
+    res.textContent = "Javob: x = " + r;
+    [
+      a + "·x + " + b + " = " + c,
+      "b ni o'ng tomonga o'tkazamiz: " + a + "·x = " + (c - b),
+      "a ga bo'lamiz: x = " + (c - b) + " / " + a + " = " + r
+    ].forEach(function (t) {
+      var li = document.createElement("li");
+      li.textContent = t;
+      steps.appendChild(li);
+    });
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); solve(); });
+  solve();
+})();
+</script>
+</body>
+</html>
