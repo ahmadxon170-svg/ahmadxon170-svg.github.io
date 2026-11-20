@@ -1,257 +1,279 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ahmadxon Abdulhakimov</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<style>
-/* Layout idea: ustunli sahifa, chap tomonda geometrik naqsh, o'ng tomonda mazmun */
-:root {
-  --bg: #eef2f4;
-  --surface: #ffffff;
-  --ink: #12262e;
-  --muted: #55696f;
-  --accent: #0b6e6e;
-  --accent-soft: #d3ecea;
-  --gold: #b7791f;
-  --line: #cdd8dc;
-  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
-  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
-  color-scheme: light;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.6;
-}
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 3px solid var(--gold);
-  outline-offset: 2px;
-}
-.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-header.top {
-  background: var(--ink);
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-header.top .pattern {
-  position: absolute; inset: 0;
-  opacity: .18;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
-}
-header.top .wrap { position: relative; padding-top: 28px; padding-bottom: 64px; }
-nav { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 16px; }
-nav a { color: #cfe3e3; text-decoration: none; padding: 4px 0; }
-nav a:hover { color: #fff; text-decoration: underline; }
-.hero { margin-top: 56px; display: grid; gap: 18px; }
-.kicker { color: #9fd3cf; font-weight: 600; letter-spacing: .04em; margin: 0; }
-h1 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2.3rem, 8vw, 4.4rem);
-  line-height: 1.05;
-  margin: 0;
-  text-wrap: balance;
-}
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 0; padding: 0; list-style: none; }
-.chips li {
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: 999px;
-  padding: 4px 14px;
-  font-size: 16px;
-}
-main { padding: 8px 0 48px; }
-section { padding-top: 48px; }
-h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
-  margin: 0 0 14px;
-  text-wrap: balance;
-}
-.lead { max-width: 65ch; margin: 0; }
-.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 22px; }
-.card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 18px 20px;
-}
-.card h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 6px; }
-.card p { margin: 0; color: var(--muted); }
-.card .big { font-family: var(--font-display); font-size: 2rem; color: var(--accent); display: block; line-height: 1.1; }
-.band {
-  background: var(--accent-soft);
-  border-left: 6px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  padding: 18px 22px;
-  margin-top: 22px;
-  max-width: 70ch;
-}
-.band p { margin: 0; }
-.solver { margin-top: 22px; }
-.solver form { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 1.15rem; }
-.solver input {
-  width: 84px;
-  font: inherit;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
-  color: var(--ink);
-}
-.solver button {
-  font: inherit; font-weight: 600;
-  background: var(--accent); color: #fff;
-  border: 0; border-radius: 8px;
-  padding: 9px 18px; cursor: pointer;
-}
-.solver button:hover { background: #095858; }
-.result { margin: 14px 0 0; font-weight: 600; min-height: 1.6em; }
-.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
-.timeline { list-style: none; margin: 22px 0 0; padding: 0; border-left: 3px solid var(--line); }
-.timeline li { padding: 0 0 18px 20px; position: relative; }
-.timeline li::before {
-  content: ""; position: absolute; left: -9px; top: 8px;
-  width: 15px; height: 15px; border-radius: 50%;
-  background: var(--gold); border: 3px solid var(--bg);
-}
-.timeline strong { font-family: var(--font-display); }
-footer { background: var(--ink); color: #cfe3e3; padding: 28px 0; font-size: 16px; }
-footer p { margin: 0 0 4px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ahmadxon Abdulhakimov — IT yo‘nalishiga qiziquvchi va dasturlashni o‘rganayotgan yosh portfolio.">
+  <meta name="theme-color" content="#071426">
+  <title>Ahmadxon | Shaxsiy IT sahifasi</title>
+  <style>
+    :root {
+      --bg: #071426;
+      --bg-soft: #0b1d34;
+      --card: rgba(16, 39, 66, .76);
+      --line: rgba(148, 190, 230, .16);
+      --text: #edf6ff;
+      --muted: #a9bdd2;
+      --blue: #42a5ff;
+      --cyan: #63e0e8;
+      --shadow: 0 22px 65px rgba(0, 0, 0, .28);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(29, 112, 190, .22), transparent 36rem),
+        radial-gradient(ellipse at 0% 40%, rgba(32, 91, 153, .16), transparent 32rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(7, 20, 38, .82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-size: 1.08rem; font-weight: 800; letter-spacing: -.04em; }
+    .brand span { color: var(--cyan); }
+    .navlinks { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover { color: var(--cyan); }
+    .menu-btn { display: none; border: 1px solid var(--line); color: var(--text); background: var(--card); padding: 9px 12px; border-radius: 10px; }
+    .hero { padding: 104px 0 88px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 55px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 7px 13px; border: 1px solid rgba(99,224,232,.25); border-radius: 999px; color: var(--cyan); background: rgba(50,170,190,.08); font-size: .84rem; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 14px var(--cyan); }
+    h1 { margin: 22px 0 16px; font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.065em; }
+    h1 span { color: var(--blue); }
+    .hero p { max-width: 620px; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 18px; border-radius: 12px; font-weight: 700; border: 1px solid var(--line); transition: .2s ease; }
+    .btn-primary { color: #041322; background: linear-gradient(120deg, var(--cyan), var(--blue)); border: 0; }
+    .btn-secondary { background: rgba(255,255,255,.035); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(48,151,235,.18); }
+    .code-card {
+      position: relative; padding: 25px; border-radius: 24px; border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(19,48,79,.94), rgba(8,25,45,.94)); box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+    .windowbar { display: flex; gap: 7px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .windowbar i { width: 9px; height: 9px; border-radius: 50%; background: #50708d; }
+    .code { padding-top: 18px; font: .91rem/2.05 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c7d8e9; }
+    .code .blue { color: #6bbaff; } .code .cyan { color: #75e5e8; } .code .dim { color: #7894ad; }
+    .code-indent { padding-left: 22px; }
+    section { padding: 76px 0; }
+    .section-head { margin-bottom: 30px; }
+    .kicker { color: var(--cyan); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 800; }
+    h2 { margin: 8px 0 0; font-size: clamp(1.9rem, 4vw, 2.65rem); letter-spacing: -.045em; line-height: 1.2; }
+    .section-desc { color: var(--muted); max-width: 660px; margin-top: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: 0 12px 40px rgba(0,0,0,.12); }
+    .card-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 13px; color: var(--cyan); background: rgba(66,165,255,.12); font-size: 1.25rem; margin-bottom: 17px; }
+    .card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .about-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 20px; }
+    .about-highlight { background: linear-gradient(145deg, rgba(26,91,146,.35), rgba(16,39,66,.76)); }
+    .about-highlight .big { font-size: 3rem; font-weight: 850; letter-spacing: -.06em; color: var(--cyan); line-height: 1.1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .tag { border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; color: #c8dced; font-size: .82rem; background: rgba(255,255,255,.025); }
+    .skill-list { display: grid; gap: 17px; }
+    .skill-top { display: flex; justify-content: space-between; gap: 10px; color: #dceafa; font-size: .92rem; }
+    .skill-top small { color: var(--muted); }
+    .track { height: 7px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; margin-top: 8px; }
+    .track span { display: block; height: 100%; width: 25%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+    .project-card { min-height: 205px; display: flex; flex-direction: column; }
+    .project-card .soon { margin-top: auto; padding-top: 22px; color: var(--cyan); font-size: .82rem; font-weight: 700; }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 32px; border-radius: 26px; border: 1px solid rgba(99,224,232,.2); background: linear-gradient(120deg, rgba(18,65,105,.8), rgba(11,29,52,.9)); }
+    .contact-box p { margin: 9px 0 0; color: var(--muted); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
+    footer .container { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding: 78px 0 55px; gap: 38px; }
+      .code-card { max-width: 520px; transform: none; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .about-layout { grid-template-columns: 1fr; }
+      .contact-box { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1120px); }
+      nav { min-height: 66px; flex-wrap: wrap; padding: 12px 0; }
+      .menu-btn { display: block; }
+      .navlinks { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 12px; padding: 8px 0 12px; }
+      .navlinks.open { display: flex; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+      .hero { padding-top: 65px; }
+      .contact-box { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
 </head>
 <body>
-
-<header class="top">
-  <div class="pattern" aria-hidden="true"></div>
-  <div class="wrap">
-    <nav aria-label="Bo'limlar">
-      <a href="#haqimda">Men haqimda</a>
-      <a href="#loyiha">Loyiha</a>
-      <a href="#xorazmiy">Al-Xorazmiy</a>
-      <a href="#algebra">Algebra sinovi</a>
-      <a href="#aloqa">Aloqa</a>
+  <header class="topbar">
+    <nav class="container" aria-label="Asosiy navigatsiya">
+      <a class="brand" href="#home">AHMAD<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Bo‘limlar ☰</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#about">Men haqimda</a>
+        <a href="#skills">Ko‘nikmalar</a>
+        <a href="#projects">Loyihalar</a>
+        <a href="#contact">Aloqa</a>
+      </div>
     </nav>
-    <div class="hero">
-      <p class="kicker">Shaxsiy sahifa</p>
-      <h1>Ahmadxon Abdulhakimov</h1>
-      <ul class="chips">
-        <li>47-maktab</li>
-        <li>8-"B" sinf</li>
-        <li>Al-Xorazmiy vorislari</li>
-      </ul>
+  </header>
+
+  <main>
+    <div class="container hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Axborot texnologiyalari olamiga ilk qadamlar</div>
+        <h1>Assalomu alaykum, men <span>Ahmadxon</span>.</h1>
+        <p>Men axborot texnologiyalari sohasiga qiziquvchi va dasturlashni o‘rganayotgan boshlovchiman. Hozir bilimlarimni mustahkamlab, kichik loyihalar orqali tajriba orttirishga intilyapman.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Ishlarimni ko‘rish <span>↗</span></a>
+          <a class="btn btn-secondary" href="#contact">Men bilan bog‘lanish</a>
+        </div>
+      </div>
+      <div class="code-card" aria-label="Dasturchi kodi tasviri">
+        <div class="windowbar"><i></i><i></i><i></i></div>
+        <div class="code">
+          <div><span class="dim">// mening-sahifam.js</span></div>
+          <div><span class="blue">const</span> developer = {</div>
+          <div class="code-indent">ism: <span class="cyan">"Ahmadxon"</span>,</div>
+          <div class="code-indent">soha: <span class="cyan">"Axborot texnologiyalari"</span>,</div>
+          <div class="code-indent">daraja: <span class="cyan">"Boshlovchi"</span>,</div>
+          <div class="code-indent">maqsad: <span class="cyan">"O‘rganishda davom etish"</span></div>
+          <div>};</div>
+          <div style="margin-top:12px"><span class="blue">console</span>.<span class="cyan">log</span>(developer);</div>
+        </div>
+      </div>
     </div>
-  </div>
-</header>
 
-<main class="wrap">
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Men haqimda</div>
+          <h2>O‘rganishdan to‘xtamayman.</h2>
+          <p class="section-desc">Har bir katta natija kichik qadamdan boshlanadi. Men ham axborot texnologiyalari sohasidagi yo‘limni izlanish, mashq va yangi bilimlar bilan boshlayapman.</p>
+        </div>
+        <div class="about-layout">
+          <article class="card about-highlight">
+            <div class="big">01</div>
+            <h3>Doimiy o‘sish</h3>
+            <p>Maqsadim — dasturlash asoslarini puxta o‘rganish va kelajakda insonlarga foydasi tegadigan raqamli mahsulotlar yaratish.</p>
+            <div class="tags"><span class="tag">Bilimga chanqoq</span><span class="tag">Izlanuvchan</span><span class="tag">Maqsad sari intilaman</span></div>
+          </article>
+          <article class="card">
+            <h3>Hozirgi o‘rganish yo‘nalishim</h3>
+            <p>Hozir axborot texnologiyalari asoslarini o‘rganishga e’tibor qaratganman. HTML yordamida veb-sahifa tuzilishini, CSS yordamida esa uning tashqi ko‘rinishini yaratishni o‘rganyapman. Keyingi maqsadim — JavaScriptni o‘rganib, harakatga javob beradigan veb-sahifalar yaratish.</p>
+            <div class="tags"><span class="tag">Veb-dasturlash</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript — kelgusi maqsad</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <section id="haqimda">
-    <h2>Men haqimda</h2>
-    <p class="lead">Salom! Men Ahmadxon Abdulhakimov. 47-maktabning 8-"B" sinfida o'qiyman. Hozir O'zbekistonning barcha hududlarida ommalashgan "Al-Xorazmiy vorislari" loyihasining o'quvchisiman.</p>
-    <div class="grid">
-      <div class="card"><span class="big">8-"B"</span><p>Sinfim</p></div>
-      <div class="card"><span class="big">47</span><p>Maktabim raqami</p></div>
-      <div class="card"><span class="big">2026</span><p>Joriy o'quv yili</p></div>
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Ko‘nikmalar</div>
+          <h2>O‘rganayotgan dasturlash vositalarim.</h2>
+          <p class="section-desc">Bu bo‘limda hozir o‘rganayotgan bilimlarim keltirilgan. Tajribam oshgani sari ma’lumotlarni yangilab boraman.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>HTML</h3>
+            <p>Veb-sahifa tuzilishi, sarlavhalar, matnlar, havolalar va bo‘limlar yaratish.</p>
+            <div class="tags"><span class="tag">O‘rganish jarayonida</span></div>
+          </article>
+          <article class="card">
+            <div class="card-icon">✦</div>
+            <h3>CSS</h3>
+            <p>Ranglar, yozuvlar, elementlar joylashuvi va turli ekranlarga mos dizayn asoslari.</p>
+            <div class="tags"><span class="tag">O‘rganish jarayonida</span></div>
+          </article>
+          <article class="card">
+            <div class="card-icon">JS</div>
+            <h3>JavaScript</h3>
+            <p>Veb-sahifalarga interaktiv imkoniyatlar qo‘shish — kelgusidagi o‘rganish maqsadim.</p>
+            <div class="tags"><span class="tag">Keyingi o‘rganish bosqichi</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Portfolio</div>
+          <h2>Amaliy ishlarim va loyihalarim.</h2>
+          <p class="section-desc">Bu bo‘limga o‘zim yaratgan tayyor ishlarim va yangi loyihalarimni joylashtirib boraman.</p>
+        </div>
+        <div class="grid">
+          <article class="card project-card">
+            <div class="card-icon">🌐</div>
+            <h3>Shaxsiy tanishtiruv sahifasi</h3>
+            <p>Men, qiziqishlarim va axborot texnologiyalari yo‘nalishidagi o‘sishim haqida veb-sahifa.</p>
+            <div class="soon">HTML · CSS asoslari</div>
+          </article>
+          <article class="card project-card">
+            <div class="card-icon">💡</div>
+            <h3>Navbatdagi loyiha</h3>
+            <p>Yangi bilimlarim asosida kichik va foydali veb-sahifa yaratishni rejalashtiryapman.</p>
+            <div class="soon">Rejada</div>
+          </article>
+          <article class="card project-card">
+            <div class="card-icon">🚀</div>
+            <h3>O‘rganish jarayonim</h3>
+            <p>O‘rganayotgan mavzularim va bajargan amaliy mashqlarimni shu yerda jamlab boraman.</p>
+            <div class="soon">Bajarilmoqda</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="kicker">Aloqa</div>
+            <h2>Savolingiz yoki taklifingiz bormi?</h2>
+            <p>Quyidagi aloqa manzillari orqali men bilan bog‘lanishingiz mumkin.</p>
+          </div>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="https://t.me/ahmadxon_06" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+            <a class="btn btn-secondary" href="mailto:ahmadxon237@gmail.com">Email ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Ahmadxon Abdulhakimov</span>
+      <span>Bilim olish, izlanish va rivojlanish sari!</span>
     </div>
-  </section>
-
-  <section id="loyiha">
-    <h2>Al-Xorazmiy vorislari loyihasi</h2>
-    <p class="lead">Bu loyiha O'zbekistonning barcha hududlarida keng tarqalgan. Unda o'quvchilar buyuk bobokalonimiz Al-Xorazmiy izidan borib, zamonaviy bilimlarni o'rganadi.</p>
-    <div class="band">
-      <p>Men bu loyihada o'qiyman va har kuni yangi narsa o'rganishga harakat qilaman.</p>
-    </div>
-  </section>
-
-  <section id="xorazmiy">
-    <h2>Muhammad ibn Muso al-Xorazmiy kim?</h2>
-    <p class="lead">Al-Xorazmiy (taxminan 780–850) Xorazmda tug'ilgan buyuk olim bo'lib, matematika, astronomiya va geografiya sohalarida ishlagan.</p>
-    <ul class="timeline">
-      <li><strong>Algebra.</strong> "Al-jabr val-muqobala" asari algebra fanining nomi va asosini bergan. "Algebra" so'zi "al-jabr"dan kelib chiqqan.</li>
-      <li><strong>Algoritm.</strong> "Algoritm" so'zi uning nomining lotincha shaklidan olingan. Bugungi dasturlash ham algoritmlarga tayanadi.</li>
-      <li><strong>Hind raqamlari.</strong> U o'nlik pozitsion sanoq tizimini keng tarqatishga hissa qo'shgan.</li>
-      <li><strong>Bag'dod.</strong> U "Bayt ul-hikma" (Donishmandlik uyi)da ilmiy ish olib borgan.</li>
-    </ul>
-  </section>
-
-  <section id="algebra">
-    <h2>Algebra sinovi</h2>
-    <p class="lead">Al-Xorazmiy tenglamalar bilan ishlagan. Quyida a·x + b = c ko'rinishidagi tenglamani yeching.</p>
-    <div class="card solver">
-      <form id="eq" autocomplete="off">
-        <input id="a" type="number" value="3" aria-label="a qiymati"> <span>· x +</span>
-        <input id="b" type="number" value="5" aria-label="b qiymati"> <span>=</span>
-        <input id="c" type="number" value="20" aria-label="c qiymati">
-        <button type="submit">Yechish</button>
-      </form>
-      <p class="result" id="res" aria-live="polite"></p>
-      <ol class="steps" id="steps"></ol>
-    </div>
-  </section>
-
-  <section id="aloqa">
-    <h2>Aloqa</h2>
-    <p class="lead">Bog'lanish uchun manzillar shu yerga qo'shiladi. Telegram yoki elektron pochtangizni pastdagi kodda o'zgartiring.</p>
-    <div class="grid">
-      <div class="card"><h3>Telegram</h3><p>@sizning_nomingiz</p></div>
-      <div class="card"><h3>Elektron pochta</h3><p>ism@pochta.uz</p></div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <p>Ahmadxon Abdulhakimov · 47-maktab, 8-"B" sinf</p>
-    <p>"Al-Xorazmiy vorislari" loyihasi o'quvchisi</p>
-  </div>
-</footer>
-
-<script>
-(function () {
-  var form = document.getElementById("eq");
-  var res = document.getElementById("res");
-  var steps = document.getElementById("steps");
-  function solve() {
-    var a = parseFloat(document.getElementById("a").value);
-    var b = parseFloat(document.getElementById("b").value);
-    var c = parseFloat(document.getElementById("c").value);
-    steps.innerHTML = "";
-    if ([a, b, c].some(isNaN)) { res.textContent = "Uchala maydonga ham son kiriting."; return; }
-    if (a === 0) {
-      res.textContent = (b === c) ? "x istalgan son bo'ladi." : "Yechim yo'q.";
-      return;
-    }
-    var x = (c - b) / a;
-    var r = Math.round(x * 1000) / 1000;
-    res.textContent = "Javob: x = " + r;
-    [
-      a + "·x + " + b + " = " + c,
-      "b ni o'ng tomonga o'tkazamiz: " + a + "·x = " + (c - b),
-      "a ga bo'lamiz: x = " + (c - b) + " / " + a + " = " + r
-    ].forEach(function (t) {
-      var li = document.createElement("li");
-      li.textContent = t;
-      steps.appendChild(li);
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
     });
-  }
-  form.addEventListener("submit", function (e) { e.preventDefault(); solve(); });
-  solve();
-})();
-</script>
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
