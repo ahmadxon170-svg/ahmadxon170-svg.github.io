@@ -1,4 +1,4 @@
-
+ 
 name: Deploy AHMAD ML META
 
 on:
@@ -52,8 +52,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-            timeout-minutes: 20
     needs: build
+    timeout-minutes: 20
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
