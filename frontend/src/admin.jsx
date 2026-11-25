@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+ const API = 'https://ahmad-ml-meta-api.onrender.com/api';
 
 const roles = ['Tank', 'Fighter', 'Assassin', 'Mage', 'Marksman', 'Support'];
 
