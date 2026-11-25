@@ -9,9 +9,9 @@ import { createClient } from '@supabase/supabase-js';
 const required = ['SUPABASE_URL','SUPABASE_SERVICE_ROLE_KEY','ADMIN_PASSWORD','JWT_SECRET'];
 for (const key of required) if (!process.env[key]) console.warn(`Missing environment variable: ${key}`);
 
-const app = express();
+ const app = express();
+app.set('trust proxy', 1);
 const db = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_SERVICE_ROLE_KEY || '');
-app.use(helmet());
 app.use(cors({ origin: process.env.FRONTEND_ORIGIN?.split(',') || 'http://localhost:5173' }));
 app.use(express.json({ limit: '1mb' }));
 app.use('/api', rateLimit({ windowMs: 60_000, limit: 120 }));
