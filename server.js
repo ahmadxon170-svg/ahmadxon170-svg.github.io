@@ -11,6 +11,7 @@ for (const key of required) if (!process.env[key]) console.warn(`Missing environ
 
  const app = express();
 app.set('trust proxy', 1);
+console.log('SUPABASE HOST:', new URL(process.env.SUPABASE_URL).host);
 const db = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_SERVICE_ROLE_KEY || '');
 app.use(cors({ origin: process.env.FRONTEND_ORIGIN?.split(',') || 'http://localhost:5173' }));
 app.use(express.json({ limit: '1mb' }));
